@@ -24,23 +24,29 @@ struct ContentView: View {
               .foregroundColor(Color.white)
           }
           HStack {
-            Text("C")
-              .frame(width: 80, height: 80)
-              .background(Color.gray)
-              .cornerRadius(40)
-              .foregroundColor(Color.white)
-              .font(Font.system(size: 40))
+            
+            Button {
+              totalNumber = "0"
+            } label: {
+              Text("C")
+                .frame(width: 80, height: 80)
+                .background(Color.gray)
+                .cornerRadius(40)
+                .foregroundColor(Color.black)
+                .font(Font.system(size: 40))
+            }
+
             Text("/")
               .frame(width: 80, height: 80)
               .background(Color.gray)
               .cornerRadius(40)
-              .foregroundColor(Color.white)
+              .foregroundColor(Color.black)
               .font(Font.system(size: 40))
             Text("%")
               .frame(width: 80, height: 80)
               .background(Color.gray)
               .cornerRadius(40)
-              .foregroundColor(Color.white)
+              .foregroundColor(Color.black)
               .font(Font.system(size: 40))
             Text("%")
               .frame(width: 80, height: 80)
