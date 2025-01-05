@@ -33,20 +33,20 @@ enum ButtonType:String {
     case .divide: return "/"
     case .percent: return "%"
     case .opposite: return "+/-"
-    
+      
     }
   }
   var backgroundColor: Color {
     switch self {
     case .first, .second, .third, .fourth, .fifth, .sixth, .seventh, .eighth, .ninth, .zero, .dot : return Color("NumberButton")
-    case .equal,.plus, .minus, .multiply, .divide : return Color.orange
+    case .equal, .plus, .minus, .multiply, .divide : return Color.orange
     case .percent, .opposite, .clear: return Color.gray
     }
   }
   var foregroundColor: Color {
     switch self {
     case .percent, .opposite, .clear: return Color.black
-      default : return Color.white
+    default : return Color.white
     }
   }
 }
