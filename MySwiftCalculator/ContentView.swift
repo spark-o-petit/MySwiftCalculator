@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ButtonType:String {
+enum ButtonType: String {
   case first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, zero
   case dot, equal, plus, minus, multiply, divide
   case percent, opposite, clear
@@ -54,6 +54,8 @@ enum ButtonType:String {
 struct ContentView: View {
   
   @State private var totalNumber: String = "0"
+  @State var tempNumber: Int = 0
+  @State var operatorType: ButtonType = .clear
   
   private let buttonData: [[ButtonType]] = [
     [.clear, .opposite, .percent, .divide],
@@ -80,23 +82,22 @@ struct ContentView: View {
           HStack {
             ForEach(row, id: \.self) {button in
               Button {
-                if totalNumber == "0" {
-                  
-                  if button == .clear {
-                    totalNumber = "0"
-                  } else {
-                    totalNumber = button.buttonDisplayName
-                  }
-                  
-                } else {
-                  
-                  if button == .clear {
-                    totalNumber = "0"
-                  } else {
-                    totalNumber += button.buttonDisplayName
-                  }
-                  
+                if button == .clear {
+                        totalNumber = "0"
+                } else if button == .plus {
+                  tempNumber = Int(totalNumber) ?? 0
+                  operatorType = .plus
+                  totalNumber = "0"
                 }
+                else if button == .equal {
+                  totalNumber = String((Int(totalNumber) ?? 0) + tempNumber )
+                } else {
+                        if totalNumber == "0" {
+                            totalNumber = button.buttonDisplayName
+                        } else {
+                            totalNumber += button.buttonDisplayName
+                        }
+                    }
               } label: {
                 Text(button.buttonDisplayName)
                   .frame(width: button == .zero ? 170 : 80, height: 80)
