@@ -88,9 +88,17 @@ struct ContentView: View {
                   tempNumber = Int(totalNumber) ?? 0
                   operatorType = .plus
                   totalNumber = "0"
+                } else if button == .minus {
+                  tempNumber = Int(totalNumber) ?? 0
+                  operatorType = .minus
+                  totalNumber = "0"
                 }
                 else if button == .equal {
-                  totalNumber = String((Int(totalNumber) ?? 0) + tempNumber )
+                  if operatorType == .plus {
+                    totalNumber = String(tempNumber + (Int(totalNumber) ?? 0))
+                  } else if operatorType == .minus {
+                    totalNumber = String(tempNumber - (Int(totalNumber) ?? 0)  )
+                  }
                 } else {
                         if totalNumber == "0" {
                             totalNumber = button.buttonDisplayName
