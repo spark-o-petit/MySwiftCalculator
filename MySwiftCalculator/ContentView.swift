@@ -87,7 +87,7 @@ struct ContentView: View {
                 }
               } label: {
                 Text(button.buttonDisplayName)
-                  .frame(width: 80, height: 80)
+                  .frame(width: button == .zero ? 170 : 80, height: 80)
                   .background(button.backgroundColor)
                   .cornerRadius(40)
                   .foregroundColor(button.foregroundColor)
