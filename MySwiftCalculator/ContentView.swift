@@ -114,7 +114,7 @@ struct ContentView: View {
                     }
               } label: {
                 Text(button.buttonDisplayName)
-                  .frame(width: button == .zero ? 170 : 80, height: 80)
+                  .frame(width: calculateButtonWidth(button: button), height: calculateButtonHeight(button: button))
                   .background(button.backgroundColor)
                   .cornerRadius(40)
                   .foregroundColor(button.foregroundColor)
@@ -125,6 +125,19 @@ struct ContentView: View {
         }
       }
     }
+  }
+  
+  private func calculateButtonWidth(button: ButtonType ) -> CGFloat {
+    switch button {
+    case .zero:
+      return (UIScreen.main.bounds.width - 5 * 10) / 2 + 10
+    default:
+      return (UIScreen.main.bounds.width - 5 * 10) / 4
+    }
+  }
+  
+  private func calculateButtonHeight(button: ButtonType ) -> CGFloat {
+          return (UIScreen.main.bounds.width - 5 * 10) / 4
   }
 }
 
