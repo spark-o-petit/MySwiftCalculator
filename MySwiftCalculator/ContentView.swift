@@ -92,12 +92,18 @@ struct ContentView: View {
                   tempNumber = Int(totalNumber) ?? 0
                   operatorType = .minus
                   totalNumber = "0"
+                } else if button == .multiply {
+                  tempNumber = Int(totalNumber) ?? 0
+                  operatorType = .multiply
+                  totalNumber = "0"
                 }
                 else if button == .equal {
                   if operatorType == .plus {
                     totalNumber = String(tempNumber + (Int(totalNumber) ?? 0))
                   } else if operatorType == .minus {
                     totalNumber = String(tempNumber - (Int(totalNumber) ?? 0)  )
+                  } else if operatorType == .multiply {
+                    totalNumber = String(tempNumber * (Int(totalNumber) ?? 0))
                   }
                 } else {
                         if totalNumber == "0" {
