@@ -81,9 +81,21 @@ struct ContentView: View {
             ForEach(row, id: \.self) {button in
               Button {
                 if totalNumber == "0" {
-                  totalNumber = "7"
+                  
+                  if button == .clear {
+                    totalNumber = "0"
+                  } else {
+                    totalNumber = button.buttonDisplayName
+                  }
+                  
                 } else {
-                  totalNumber += "7"
+                  
+                  if button == .clear {
+                    totalNumber = "0"
+                  } else {
+                    totalNumber += button.buttonDisplayName
+                  }
+                  
                 }
               } label: {
                 Text(button.buttonDisplayName)
